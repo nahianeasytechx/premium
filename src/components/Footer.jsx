@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { IoLocation } from "react-icons/io5";
 import { IoIosCall } from "react-icons/io";
+import { Link } from "react-router-dom";
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -147,18 +148,19 @@ export default function Footer() {
                 href="tel:09617777000"
                 className="flex text-white hover:text-emerald-300 transition-colors"
               >
-              <span><IoIosCall className="mt-1"/></span>  09617777000
+                <span>
+                  <IoIosCall className="mt-1" />
+                </span>{" "}
+                09617777000
               </a>
               <br />
 
               <a
                 href=""
                 className="text-white hover:text-emerald-300 transition-colors"
-              >
-               
-              </a>
+              ></a>
             </div>
-<br />
+            <br />
             {/* Location Section */}
             <div>
               <div className="space-y-3">
@@ -168,12 +170,11 @@ export default function Footer() {
                 >
                   <div className="text-sm">
                     <h3 className="flex font-semibold text-gray-200">
-                                           <span>
+                      <span>
                         {" "}
                         <IoLocation className=" text-base" />
                       </span>
                       Corporate Office:{" "}
-
                     </h3>
                     <div className=" text-xs ">
                       Land View Commercial Center, 9th Floor 28 Gulshan North
@@ -181,7 +182,6 @@ export default function Footer() {
                     </div>
                   </div>
                 </a>
-
               </div>
               <br />
               <div className="space-y-3">
@@ -191,23 +191,21 @@ export default function Footer() {
                 >
                   <div className="text-sm">
                     <h3 className="flex font-semibold text-gray-200">
-                                           <span>
+                      <span>
                         {" "}
                         <IoLocation className=" text-base" />
                       </span>
                       Site Office:{" "}
-
                     </h3>
                     <div className=" text-xs ">
-                      2nd & 3rd Floor, Tokyo Plaza,Ashulia Model Town Khagan Bazar,Dhaka
-                      C/A, Gulshan Circle-2 ,Dhaka
+                      2nd & 3rd Floor, Tokyo Plaza,Ashulia Model Town Khagan
+                      Bazar,Dhaka C/A, Gulshan Circle-2 ,Dhaka
                     </div>
                   </div>
                 </a>
-
               </div>
             </div>
-<br />
+            <br />
             {/* Social Media */}
             <div>
               <h3 className="text-white font-semibold mb-4">
@@ -218,19 +216,27 @@ export default function Footer() {
                   href="#"
                   className="text-gray-300 hover:text-emerald-500 transition-colors"
                 >
-                  <Facebook className="w-5 h-5" />
+                  <a href="https://www.facebook.com/thepremiumhomesltd/">
+                    <Facebook className="w-5 h-5" />
+                  </a>
                 </a>
                 <a
                   href="#"
                   className="text-gray-300 hover:text-emerald-500 transition-colors"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <a href="https://www.linkedin.com/company/thepremiumhomes?originalSubdomain=bd">
+                    {" "}
+                    <Linkedin className="w-5 h-5" />
+                  </a>
                 </a>
                 <a
                   href="#"
                   className="text-gray-300 hover:text-emerald-500 transition-colors"
                 >
-                  <Youtube className="w-5 h-5" />
+                  <a href="https://www.youtube.com/@ThePremiumHomesLTD">
+                    {" "}
+                    <Youtube className="w-5 h-5" />
+                  </a>
                 </a>
                 <a
                   href="#"
