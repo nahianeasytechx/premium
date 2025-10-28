@@ -37,9 +37,10 @@ const Home = () => {
       </div>
       
       <MovingImages/>
+          <ProjectType/>
       <FindYourPlace/>
       <ClientReview/>
-      <ProjectType/>
+  
       <Progress/>
       <Blogs/>
     </>

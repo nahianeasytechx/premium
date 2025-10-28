@@ -1,313 +1,211 @@
-import React, { useState, useRef } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { FaArrowLeft, FaArrowRight, FaStar, FaQuoteLeft } from "react-icons/fa6";
+import "swiper/css";
+import "swiper/css/navigation";
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-
-const ProjectsByType = () => {
-  const [activeTab, setActiveTab] = useState("regular");
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const swiperRef = useRef(null);
-
-  const projectTypes = [
-    { id: "regular", label: "Regular Residential" },
-    { id: "condominium", label: "Condominium" },
-    { id: "studio", label: "Studio Suite" },
-    { id: "commercial", label: "Commercial" },
+const ClientReview = () => {
+  const reviews = [
+    {
+      id: 1,
+      name: "Sarah Johnson",
+      role: "Homeowner",
+      location: "Gulshan, Dhaka",
+      rating: 5,
+      review:
+        "Exceptional service and quality! The team went above and beyond to ensure every detail was perfect. Our dream home became a reality, and we couldn't be happier with the results.",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+      project: "The Premium Southpoint Villa",
+    },
+    {
+      id: 2,
+      name: "Ahmed Rahman",
+      role: "Property Investor",
+      location: "Banani, Dhaka",
+      rating: 5,
+      review:
+        "Outstanding investment opportunity with excellent returns. The construction quality and location are top-notch. Highly recommend for anyone looking for premium properties in Dhaka.",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+      project: "Marina Condominium",
+    },
+    {
+      id: 3,
+      name: "Priya Sharma",
+      role: "Business Owner",
+      location: "Dhanmondi, Dhaka",
+      rating: 5,
+      review:
+        "From initial consultation to final handover, everything was seamless. The attention to detail and customer service exceeded our expectations. A truly professional experience.",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
+      project: "Pearl Towers",
+    },
+    {
+      id: 4,
+      name: "Michael Chen",
+      role: "Entrepreneur",
+      location: "Uttara, Dhaka",
+      rating: 5,
+      review:
+        "The perfect blend of modern design and functionality. Living here has been an absolute pleasure. The amenities and community atmosphere are fantastic.",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
+      project: "Urban Studio Living",
+    },
+    {
+      id: 5,
+      name: "Fatima Khan",
+      role: "Corporate Executive",
+      location: "Bashundhara, Dhaka",
+      rating: 5,
+      review:
+        "Premium quality construction with world-class amenities. The project was completed on time, and the after-sales service has been excellent. Highly satisfied with our purchase.",
+      image:
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80",
+      project: "Green Valley Residence",
+    },
+    {
+      id: 6,
+      name: "David Martinez",
+      role: "Architect",
+      location: "Motijheel, Dhaka",
+      rating: 5,
+      review:
+        "As an architect, I'm impressed by the structural integrity and design excellence. The commercial spaces are well-planned and perfect for modern businesses.",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+      project: "Business Hub Center",
+    },
   ];
 
-  const projects = {
-    regular: [
-      {
-        id: 1,
-        title: "The Premium Southpoint Villa",
-        location: "Ashulia Model Town",
-        image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
-        status: "ONGOING",
-        description: "Modern luxury villas with premium amenities and spacious interiors",
-      },
-      {
-        id: 2,
-        title: "The Premium Lakeview Terrace",
-        location: "Ashulia Model Town",
-        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
-        status: "ONGOING",
-        description: "Contemporary residences with stunning lake views and green spaces",
-      },
-      {
-        id: 3,
-        title: "Green Valley Residence",
-        location: "Bashundhara R/A",
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
-        status: "ONGOING",
-        description: "Eco-friendly homes nestled in lush greenery with modern facilities",
-      },
-      {
-        id: 4,
-        title: "Skyline Heights",
-        location: "Gulshan",
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-        status: "UPCOMING",
-        description: "Luxury high-rise living with panoramic city views",
-      },
-    ],
-    condominium: [
-      {
-        id: 5,
-        title: "Marina Condominium",
-        location: "Banani",
-        image: "https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?w=800&q=80",
-        status: "ONGOING",
-        description: "Upscale waterfront condominiums with world-class amenities",
-      },
-      {
-        id: 6,
-        title: "Pearl Towers",
-        location: "Dhanmondi",
-        image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80",
-        status: "ONGOING",
-        description: "Elegant condominium living in the heart of the city",
-      },
-      {
-        id: 7,
-        title: "Sunset Boulevard",
-        location: "Gulshan-2",
-        image: "https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=800&q=80",
-        status: "COMPLETED",
-        description: "Premium condos with rooftop gardens and smart home features",
-      },
-      {
-        id: 8,
-        title: "Royal Gardens",
-        location: "Baridhara",
-        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
-        status: "ONGOING",
-        description: "Luxurious condominiums surrounded by landscaped gardens",
-      },
-    ],
-    studio: [
-      {
-        id: 9,
-        title: "Urban Studio Living",
-        location: "Uttara",
-        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
-        status: "ONGOING",
-        description: "Compact yet stylish studio apartments for modern professionals",
-      },
-      {
-        id: 10,
-        title: "Smart Studio Apartments",
-        location: "Mirpur DOHS",
-        image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
-        status: "COMPLETED",
-        description: "Fully furnished smart studios with all modern conveniences",
-      },
-      {
-        id: 11,
-        title: "The Compact Elite",
-        location: "Mohakhali",
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
-        status: "ONGOING",
-        description: "Efficient studio suites with premium finishes and amenities",
-      },
-      {
-        id: 12,
-        title: "Metro Studio Residence",
-        location: "Banani",
-        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
-        status: "UPCOMING",
-        description: "Contemporary studios near metro stations for easy commuting",
-      },
-    ],
-    commercial: [
-      {
-        id: 13,
-        title: "Business Hub Center",
-        location: "Motijheel",
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-        status: "ONGOING",
-        description: "State-of-the-art commercial spaces in the financial district",
-      },
-      {
-        id: 14,
-        title: "Trade Plaza",
-        location: "Gulshan Avenue",
-        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
-        status: "UPCOMING",
-        description: "Premium retail and office spaces in prime location",
-      },
-      {
-        id: 15,
-        title: "Corporate Tower",
-        location: "Kawran Bazar",
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-        status: "ONGOING",
-        description: "Modern corporate offices with cutting-edge infrastructure",
-      },
-      {
-        id: 16,
-        title: "The Business District",
-        location: "Tejgaon",
-        image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
-        status: "COMPLETED",
-        description: "Mixed-use commercial complex with parking and amenities",
-      },
-    ],
-  };
-
   return (
-    <div className="py-16 md:py-24">
+    <div className="bg-gradient-to-b from-white to-gray-50 py-16 md:py-24">
       <div className="container mx-auto px-4 lg:px-6">
         {/* Header */}
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-            Projects by Type
-          </h2>
-          <div className="w-20 h-1 bg-green-700"></div>
-        </div>
-
-        <div className="hidden lg:flex justify-start">
-          {/* Tabs */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
-            {projectTypes.map((type) => (
-              <button
-                key={type.id}
-                onClick={() => setActiveTab(type.id)}
-                className={`cursor-pointer py-3.5 px-5 text-sm font-medium transition-all duration-300 rounded-lg ${
-                  activeTab === type.id
-                    ? "bg-green-700 text-white shadow-md"
-                    : "bg-white text-gray-700 border border-gray-300 hover:border-green-700"
-                }`}
-              >
-                {type.label}
-              </button>
-            ))}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+          <div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+              Client Reviews
+            </h2>
+            <div className="w-20 h-1 bg-green-700 mb-3"></div>
+            <p className="text-gray-600 text-sm md:text-base max-w-2xl">
+              Hear from our satisfied clients about their experiences with us.
+              Your trust is our greatest achievement.
+            </p>
           </div>
+
+          <button className="px-6 md:px-8 py-3 border border-gray-900 text-gray-900 text-sm font-medium tracking-wider hover:bg-gray-900 hover:text-white transition-all duration-300 whitespace-nowrap shadow-sm hover:shadow-md">
+            VIEW ALL REVIEWS
+          </button>
         </div>
 
-        {/* Projects Carousel */}
+        {/* Carousel */}
         <div className="relative pb-24">
+          {/* Custom Buttons */}
+          {/* <button className="swiper-button-prev bg-gray-900 text-white p-3 md:p-4 absolute -bottom-20 right-16 md:right-24 z-10 hover:bg-green-700 transition-all shadow-lg">
+            <FaArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
+          </button>
+          <button className="swiper-button-next bg-gray-900 text-white p-3 md:p-4 absolute -bottom-20 right-4 md:right-6 z-10 hover:bg-green-700 transition-all shadow-lg">
+            <FaArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+          </button> */}
+
           <Swiper
-            key={activeTab}
-            ref={swiperRef}
-            modules={[Navigation, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            speed={600}
-            loop={true}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
+            modules={[Navigation]}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
             }}
+            loop={true}
+            spaceBetween={20}
             breakpoints={{
-              640: {
-                slidesPerView: 1,
-              },
-              1024: {
-                slidesPerView: 2,
-              },
-              1280: {
-                slidesPerView: 4,
-              },
+              320: { slidesPerView: 1 },
+              640: { slidesPerView: 1 },
+              1024: { slidesPerView: 2 },
+              1280: { slidesPerView: 3 },
             }}
           >
-            {projects[activeTab].map((project, idx) => (
-              <SwiperSlide key={project.id}>
-                <div
-                  className="bg-white rounded-lg border border-slate-300 shadow-xl md:shadow-lg hover:shadow-xl transition-all duration-500 group cursor-pointer transform hover:-translate-y-2 flex flex-col"
-                  onMouseEnter={() => setHoveredCard(idx)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                >
-                  {/* Image Container */}
-                  <div className="relative h-64 overflow-hidden flex-shrink-0">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-
-                    {/* Status Badge */}
-                    <div className="absolute top-5 left-5">
-                      <span
-                        className={`px-4 py-2 text-xs font-bold text-white shadow-md ${
-                          project.status === "ONGOING"
-                            ? "bg-green-600"
-                            : project.status === "UPCOMING"
-                            ? "bg-blue-600"
-                            : "bg-gray-700"
-                        }`}
-                      >
-                        {project.status}
-                      </span>
+            {reviews.map((review) => (
+              <SwiperSlide key={review.id}>
+                <div className="px-3">
+                  <div className="bg-white p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 group h-full flex flex-col relative overflow-hidden">
+                    {/* Quote Icon */}
+                    <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                      <FaQuoteLeft className="w-20 h-20 md:w-24 md:h-24 text-green-700" />
                     </div>
 
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
-
-                    {/* Hover Content */}
-                    <div
-                      className={`absolute inset-0 flex flex-col justify-end p-6 transition-all duration-500 ${
-                        hoveredCard === idx
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-4 opacity-0"
-                      }`}
-                    >
-                      <p className="text-white text-sm leading-relaxed mb-4">
-                        {project.description}
-                      </p>
-                      <button className="self-start px-6 py-2.5 bg-white text-gray-900 text-sm font-semibold hover:bg-green-700 hover:text-white transition-all duration-300">
-                        VIEW DETAILS
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 bg-white flex-grow">
-                    <h3 className="truncate text-xl font-medium text-gray-900 mb-2 group-hover:text-green-700 transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 flex items-center truncate">
-                      <svg
-                        className="w-4 h-4 mr-2 text-green-700 flex-shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                          clipRule="evenodd"
+                    {/* Client Info */}
+                    <div className="flex items-center mb-6">
+                      <div className="relative">
+                        <img
+                          src={review.image}
+                          alt={review.name}
+                          className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-4 border-green-700 shadow-md"
                         />
-                      </svg>
-                      {project.location}
+                      </div>
+                      <div className="ml-4 flex-1">
+                        <h4 className="text-lg md:text-xl font-bold text-gray-900">
+                          {review.name}
+                        </h4>
+                        <p className="text-sm text-gray-600">{review.role}</p>
+                        <p className="text-xs text-gray-500">{review.location}</p>
+                      </div>
+                    </div>
+
+                    {/* Rating */}
+                    <div className="flex items-center mb-4">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <FaStar
+                          key={i}
+                          className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 mr-1"
+                        />
+                      ))}
+                    </div>
+
+                    {/* Review */}
+                    <p className="text-gray-700 text-sm md:text-base leading-relaxed flex-grow italic line-clamp-2 mb-4">
+                      "{review.review}"
                     </p>
+
+                    {/* Project */}
+                    <div className="pt-4 border-t border-gray-200">
+                      <p className="text-xs text-gray-500">
+                        Project:{" "}
+                        <span className="text-green-700 font-semibold">
+                          {review.project}
+                        </span>
+                      </p>
+                    </div>
+
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-700 to-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                   </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
 
-          {/* Custom Navigation Buttons */}
-          <button
-            onClick={() => swiperRef.current?.swiper.slidePrev()}
-            className="absolute -top-20 right-20 md:right-24 z-10 bg-gray-900 text-white p-3 md:p-4 hover:bg-gray-800 transition-all shadow-lg"
-            aria-label="Previous"
-          >
-            <FaArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
-          </button>
-          <button
-            onClick={() => swiperRef.current?.swiper.slideNext()}
-            className="absolute -top-20 right-8 md:right-6 z-10 bg-gray-900 text-white p-3 md:p-4 hover:bg-gray-800 transition-all shadow-lg"
-            aria-label="Next"
-          >
-            <FaArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-          </button>
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-12 border-t border-gray-200">
+          <Stat number="500+" label="Happy Clients" />
+          <Stat number="4.9/5" label="Average Rating" />
+          <Stat number="98%" label="Satisfaction Rate" />
+          <Stat number="50+" label="Projects Completed" />
         </div>
       </div>
     </div>
   );
 };
 
-export default ProjectsByType;
+const Stat = ({ number, label }) => (
+  <div className="text-center">
+    <h3 className="text-3xl md:text-4xl font-bold text-green-700 mb-2">
+      {number}
+    </h3>
+    <p className="text-gray-600 text-sm md:text-base">{label}</p>
+  </div>
+);
+
+export default ClientReview;
