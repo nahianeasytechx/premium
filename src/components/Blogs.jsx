@@ -39,14 +39,7 @@ const Blogs = () => {
 
   return (
     <>
-      <div className="container mx-auto px-4">
-        <h1 className='text-center font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#065E33]'>
-          PROGRESS OF OUR PROJECTS
-        </h1>
-        <p className='py-6 md:py-10 px-4 md:px-6 lg:px-40 text-center text-sm md:text-base lg:text-xl'>
-          Rest Assured, check everything in live to make yourself comfortable
-        </p>
-      </div>
+
 
       <div className="bg-gray-50 py-8 md:py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-6">
@@ -61,11 +54,7 @@ const Blogs = () => {
           {/* Swiper Carousel */}
           <div className="relative pb-20">
 
-            {/* Custom Navigation Buttons */}
-            <div className="absolute -top-16 right-12 flex gap-4 z-20">
-              <button className="swiper-button-prev bg-gray-900 text-white p-3 hover:bg-gray-700 transition-all"><FaArrowLeft /></button>
-              <button className="swiper-button-next bg-gray-900 text-white p-3 hover:bg-gray-700 transition-all"><FaArrowRight /></button>
-            </div>
+
 
             <Swiper
               modules={[Navigation]}

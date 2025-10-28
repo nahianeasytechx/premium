@@ -23,10 +23,10 @@ const Progress = () => {
   return (
     <>
       <div className="container mx-auto px-4">
-        <h1 className=' text-center font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#065E33]'>
+        <h1 className=' text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#065E33]'>
           PROGRESS OF OUR PROJECTS
         </h1>
-        <p className='py-10 px-6 lg:px-40 text-center text-base lg:text-xl'>
+        <p className='py-5 lg:py-10 px-6 lg:px-40 text-center text-base lg:text-xl'>
           Rest Assured, check everything in live to make yourself comfortable
         </p>
 

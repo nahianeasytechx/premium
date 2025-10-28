@@ -159,7 +159,7 @@ const ProjectsByType = () => {
   };
 
   return (
-    <div className="py-16 md:py-24">
+    <div className="py-10 md:py-24">
       <div className="container mx-auto px-4 lg:px-6">
         {/* Header */}
         <div className="mb-12">
@@ -189,7 +189,7 @@ const ProjectsByType = () => {
         </div>
 
         {/* Projects Carousel */}
-        <div className="relative pb-24">
+        <div className="relative pb-10 lg:pb-24">
           <Swiper
             key={activeTab}
             ref={swiperRef}
