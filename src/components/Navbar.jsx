@@ -88,7 +88,7 @@ const Navbar = () => {
               BOOK NOW
             </button>
             <Link to="#" className={`text-sm tracking-tight transition ${styles.textColor} ${styles.hoverColor}`}>
-              premiums
+              Login
             </Link>
             <a href="tel:8801958253300" className={`text-sm tracking-tight transition ${styles.textColor} ${styles.hoverColor}`}>
               +8801958253300

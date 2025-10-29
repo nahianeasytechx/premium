@@ -6,7 +6,8 @@ import card4 from "../../assets/Property/propertyFour.webp"
 import card5 from "../../assets/Property/propertyFive.webp"
 import card6 from "../../assets/Property/propertySix.webp"
 import card7 from "../../assets/Property/propertySeven.webp"
-import card8 from "../../assets/advertise/card8.webp"
+import card8 from "../../assets/Property/propertyEight.webp"
+
 
 // Utility function to merge classnames
 const cn = (...classes) => classes.filter(Boolean).join(' ');
@@ -25,7 +26,7 @@ function Marquee({
     const container = containerRef.current;
     if (!container) return;
 
-    const duration = 20 * 1000; // 20 seconds
+    const duration = 30 * 1000; // 20 seconds
 
     const animation = container.animate(
       [
@@ -94,14 +95,14 @@ const ImageCard = ({ img, title }) => (
 
 // Reviews data
 const images = [
-  { title: "Property 1", img: card1 },
-  { title: "Property 2", img: card2 },
-  { title: "Property 3", img: card3 },
-  { title: "Property 4", img: card4 },
-  { title: "Property 5", img: card5 },
-  { title: "Property 6", img: card6 },
-  { title: "Property 7", img: card7 },
-  { title: "Property 8", img: card8 },
+  { title: "The Maple Heights", img: card1 },
+  { title: "The Premium Suite 3.0", img: card2 },
+  { title: "The Premium Nobel Court", img: card3 },
+  { title: "The Legacy Residence", img: card4 },
+  { title: "The Premium Southpoint Villa", img: card5 },
+  { title: "The Premium Studio Suite 4.0", img: card6 },
+  { title: "The Premium Lakeview Terrace", img: card7 },
+  { title: "The Premium Glory Garden", img: card8 },
 ];
 
 const firstRow = images.slice(0, images.length / 2);

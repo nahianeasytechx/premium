@@ -1,0 +1,8 @@
+property1:The Maple Heights
+property2:The Premium Suite 3.0
+property3:The Premium Nobel Court
+property4:The Legacy Residence
+property5:The Premium Southpoint Villa
+property6:The Premium Studio Suite 4.0
+property7:The Premium Lakeview Terrace
+property8:The Premium Glory Garden

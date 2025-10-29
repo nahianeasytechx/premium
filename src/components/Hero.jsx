@@ -6,8 +6,8 @@ import {
   FaPhone,
   FaWhatsapp,
 } from "react-icons/fa";
-import bannerOne from "../assets/Banner images/bannerOne.png";
-import bannerTwo from "../assets/Banner images/bannerTwo.png";
+import bannerOne from "../assets/Banner images/bannerFive.png";
+import bannerTwo from "../assets/Banner images/bannerSix.png";
 import bannerThree from "../assets/Banner images/bannerThree.png";
 import bannerFour from "../assets/Banner images/bannerFour.png";
 
