@@ -164,6 +164,7 @@ const ProjectsByType = () => {
                     className="bg-white rounded-lg border border-slate-300 shadow-xl md:shadow-lg hover:shadow-xl transition-all duration-500 group cursor-pointer transform hover:-translate-y-2 flex flex-col"
                     onMouseEnter={() => setHoveredCard(idx)}
                     onMouseLeave={() => setHoveredCard(null)}
+                     onClick={() => navigate(`/property/${project.id}`)}
                   >
                     {/* Image Container */}
                     <div className="relative h-64 overflow-hidden flex-shrink-0">

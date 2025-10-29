@@ -7,6 +7,13 @@ const VeronaPropertyPage = () => {
   const [visibleElements, setVisibleElements] = useState(new Set());
   const [activeDropdown, setActiveDropdown] = useState(null);
 
+
+
+    // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);

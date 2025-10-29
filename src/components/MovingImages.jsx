@@ -1,5 +1,6 @@
 import React from 'react'
 import ReviewCard from './ui/ReviewCard';
+import { Link } from 'react-router-dom';
 
 const MovingImages = () => {
   return (
@@ -10,7 +11,9 @@ const MovingImages = () => {
     <p className=' py-10 px-10 lg:px-40 text-center text-sm md:text-base lg:text-xl  text-white'>At Azizi, we pride ourselves on design that combines sleek aesthetics with functional comfort.Our far-reaching portfolio has something for everyone, so you can find a home that’s authentically you</p>
 <ReviewCard/>
 <div className="flex justify-center">
-    <button className='text-white hover:text-black bg-black/20 hover:bg-white hover:bg-white-100 hover:text-black-100 focus:ring-0 font-medium px-7 py-2.5 border border-inherit hover:border-current focus:ring-0 focus:outline-none text-sm rtl:text-[15px] text-center uppercase transition duration-300 ease-out link-button min-w-[150px] inline-block'>See All</button>
+    <button className='text-white hover:text-black bg-black/20 hover:bg-white hover:bg-white-100 hover:text-black-100 focus:ring-0 font-medium px-7 py-2.5 border border-inherit hover:border-current focus:ring-0 focus:outline-none text-sm rtl:text-[15px] text-center uppercase transition duration-300 ease-out link-button min-w-[150px] inline-block'>
+    <Link to="/projects">See All</Link>
+    </button>
 </div>
 </div>
 </div>
