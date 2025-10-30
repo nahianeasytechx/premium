@@ -12,6 +12,7 @@ import {
 import { IoLocation } from "react-icons/io5";
 import { IoIosCall } from "react-icons/io";
 import { Link } from "react-router-dom";
+import whiteLogo from "../assets/logo/white.png"
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -30,9 +31,10 @@ export default function Footer() {
               </div> */}
               <div className="text-emerald-500 text-xs font-semibold">
                 <img
-                  src="/src/assets/logo/white.png"
+                  src={whiteLogo}
                   alt=""
                   className="w-50 lg:w-full"
+                  loading="lazy"
                 />
               </div>
             </div>
