@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import verticalImg from "../../assets/logo/vertical scroll image.jpg"
+import verticalImg from "../../assets/advertise/card8.webp"
 
 export default function ScrollTriggeredSingle({ className = "", scrollHeight = "200vh" }) {
   const containerRef = useRef(null);
