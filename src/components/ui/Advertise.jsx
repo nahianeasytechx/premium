@@ -9,7 +9,7 @@ const Advertise = () => {
    <div className="container mx-auto">
     <div className="flex justify-between">
 <div>
-  <img src={advertiseOne} alt={advertiseOne} className='w-[159px] md:w-[300px] lg:w-[418px]'/>
+  <img src={advertiseOne} alt={advertiseOne} className='w-[159px] md:w-[300px] lg:w-[418px] '/>
 <img src={advertiseTwo} alt={advertiseTwo} className='w-[159px] md:w-[300px] lg:w-[418px]'/>
 </div>
 <div>

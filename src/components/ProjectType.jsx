@@ -1,111 +1,38 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
-import card1 from "../assets/Property/PropertyOne.webp";
-import card2 from "../assets/Property/propertyTwo.webp";
-import card3 from "../assets/Property/propertyThree.webp";
-import card4 from "../assets/Property/propertyFour.webp";
-import card5 from "../assets/Property/propertyFive.webp";
-import card6 from "../assets/Property/propertySix.webp";
-import card7 from "../assets/Property/propertySeven.webp";
-import card8 from "../assets/Property/propertyEight.webp";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 const ProjectsByType = () => {
-  const [activeTab, setActiveTab] = useState("regular");
+  const [activeTab, setActiveTab] = useState("all");
   const [hoveredCard, setHoveredCard] = useState(null);
   const swiperRef = useRef(null);
+  const navigate = useNavigate();
+  
+  // Get properties from context
+  const { allProperties } = useContext(AppContext);
 
   const projectTypes = [
     { id: "all", label: "All" },
-    { id: "regular", label: "Regular Residential" },
-    { id: "condominium", label: "Condominium" },
-    { id: "studio", label: "Studio Suite" },
-    { id: "commercial", label: "Commercial" },
+    { id: "premium", label: "The Premium City" },
+    { id: "ashulia", label: "Ashulia Model Town" },
+    { id: "ati", label: "The Ati Society" },
   ];
 
-  const projects = {
-    regular: [
-      {
-        id: 1,
-        title: "The Premium Southpoint Villa",
-        location: "Ashulia Model Town",
-        image: card5,
-        status: "ONGOING",
-        description: "Modern luxury villas with premium amenities and spacious interiors",
-      },
-      {
-        id: 2,
-        title: "The Premium Lakeview Terrace",
-        location: "Ashulia Model Town",
-        image: card7,
-        status: "ONGOING",
-        description: "Contemporary residences with stunning lake views and green spaces",
-      },
-
-    ],
-    condominium: [
-      {
-        id: 5,
-        title: "The Legacy Residence",
-        location: "The Premium Smart City",
-        image: card4,
-        status: "ONGOING",
-        description: "Upscale waterfront condominiums with world-class amenities",
-      },
-      {
-        id: 6,
-        title: "The Nobel Court",
-        location: "The Premium Smart City",
-        image: card3,
-        status: "ONGOING",
-        description: "Elegant condominium living in the heart of the city",
-      },
-      {
-        id: 7,
-        title: "The Mapel Heigths",
-        location: "The Premium Smart City",
-        image: card1,
-        status: "COMPLETED",
-        description: "Premium condos with rooftop gardens and smart home features",
-      },
-
-    ],
-    studio: [
-      {
-        id: 9,
-        title: "The Premium Suite 3.0",
-        location: "Ashulia Model Town",
-        image: card2,
-        status: "ONGOING",
-        description: "Compact yet stylish studio apartments for modern professionals",
-      },
-      {
-        id: 10,
-        title: "The Premium Suite 4.0",
-        location: "Ashulia Model Town",
-        image: card6,
-        status: "COMPLETED",
-        description: "Fully furnished smart studios with all modern conveniences",
-      },
-
-
-    ],
-    commercial: [
-      
-    ],
+  // Group projects by community
+  const projectsByType = {
+    all: allProperties,
+    premium: allProperties.filter(p => p.community === "The Premium City"),
+    ashulia: allProperties.filter(p => p.community === "Ashulia Model Town"),
+    ati: allProperties.filter(p => p.community === "The Ati Society"),
   };
 
-  // Combine all projects for the "all" tab
-  const allProjects = [
-    ...projects.regular,
-    ...projects.condominium,
-    ...projects.studio,
-    ...projects.commercial,
-  ];
+  const currentProjects = projectsByType[activeTab] || [];
 
   return (
     <div className="py-10">
@@ -113,14 +40,14 @@ const ProjectsByType = () => {
         {/* Header */}
         <div className="mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-            Projects by Type
+            Projects by Community
           </h2>
           <div className="w-20 h-1 bg-green-700"></div>
         </div>
 
         <div className="lg:flex justify-start">
           {/* Tabs */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
             {projectTypes.map((type) => (
               <button
                 key={type.id}
@@ -138,56 +65,50 @@ const ProjectsByType = () => {
         </div>
 
         {/* Projects Carousel */}
-        <div className="relative pb-10">
-          <Swiper
-            key={activeTab}
-            ref={swiperRef}
-            modules={[Navigation, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            speed={600}
-            loop={true}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-            }}
-            breakpoints={{
-              640: { slidesPerView: 1 },
-              1024: { slidesPerView: 2 },
-              1280: { slidesPerView: 4 },
-            }}
-          >
-            {(activeTab === "all" ? allProjects : projects[activeTab]).map(
-              (project, idx) => (
+        {currentProjects.length > 0 ? (
+          <div className="relative pb-10">
+            <Swiper
+              key={activeTab}
+              ref={swiperRef}
+              modules={[Navigation, Autoplay]}
+              spaceBetween={24}
+              slidesPerView={1}
+              speed={600}
+              loop={currentProjects.length > 1}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+              }}
+              breakpoints={{
+                640: { slidesPerView: 1 },
+                1024: { slidesPerView: 2 },
+                1280: { slidesPerView: 3 },
+              }}
+            >
+              {currentProjects.map((project, idx) => (
                 <SwiperSlide key={project.id}>
                   <div
-                    className="bg-white rounded-lg border border-slate-300 shadow-xl md:shadow-lg hover:shadow-xl transition-all duration-500 group cursor-pointer transform hover:-translate-y-2 flex flex-col"
+                    className="mt-10 lg:mt-0 bg-white rounded-lg border border-slate-300 shadow-xl md:shadow-lg hover:shadow-xl transition-all duration-500 group cursor-pointer transform hover:-translate-y-2 flex flex-col"
                     onMouseEnter={() => setHoveredCard(idx)}
                     onMouseLeave={() => setHoveredCard(null)}
-                     onClick={() => navigate(`/property/${project.id}`)}
+                    onClick={() => navigate(`/property/${project.id}`)}
                   >
                     {/* Image Container */}
-                    <div className="relative h-64 overflow-hidden flex-shrink-0">
+                    <div className="relative h-64 overflow-hidden shrink-0">
                       <img
                         src={project.image}
-                        alt={project.title}
+                        alt={project.name}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
 
                       {/* Status Badge */}
-                      <div className="absolute top-5 left-5">
-                        <span
-                          className={`px-4 py-2 text-xs font-bold text-white shadow-md ${
-                            project.status === "ONGOING"
-                              ? "bg-green-600"
-                              : project.status === "UPCOMING"
-                              ? "bg-blue-600"
-                              : "bg-gray-700"
-                          }`}
-                        >
-                          {project.status}
-                        </span>
-                      </div>
+                      {project.tag && (
+                        <div className="absolute top-5 left-5">
+                          <span className="px-4 py-2 text-xs font-bold text-white shadow-md bg-green-600">
+                            {project.tag}
+                          </span>
+                        </div>
+                      )}
 
                       {/* Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
@@ -200,9 +121,7 @@ const ProjectsByType = () => {
                             : "translate-y-4 opacity-0"
                         }`}
                       >
-                        <p className="text-white text-sm leading-relaxed mb-4">
-                          {project.description}
-                        </p>
+
                         <button className="self-start px-6 py-2.5 bg-white text-gray-900 text-sm font-semibold hover:bg-green-700 hover:text-white transition-all duration-300">
                           VIEW DETAILS
                         </button>
@@ -210,13 +129,13 @@ const ProjectsByType = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 bg-white flex-grow">
+                    <div className="p-6 bg-white grow">
                       <h3 className="truncate text-xl font-medium text-gray-900 mb-2 group-hover:text-green-700 transition-colors duration-300">
-                        {project.title}
+                        {project.name}
                       </h3>
                       <p className="text-sm text-gray-600 flex items-center truncate">
                         <svg
-                          className="w-4 h-4 mr-2 text-green-700 flex-shrink-0"
+                          className="w-4 h-4 mr-2 text-green-700 shrink-0"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -228,29 +147,40 @@ const ProjectsByType = () => {
                         </svg>
                         {project.location}
                       </p>
+                      <p className="text-xs text-gray-500 mt-2">{project.types}</p>
                     </div>
                   </div>
                 </SwiperSlide>
-              )
-            )}
-          </Swiper>
+              ))}
+            </Swiper>
 
-          {/* Custom Navigation Buttons */}
-          <button
-            onClick={() => swiperRef.current?.swiper.slidePrev()}
-            className="absolute -top-20 right-20 z-10 bg-gray-900 text-white p-4 hover:bg-gray-800 transition-all shadow-lg"
-            aria-label="Previous"
-          >
-            <FaArrowLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => swiperRef.current?.swiper.slideNext()}
-            className="absolute -top-20 right-4 z-10 bg-gray-900 text-white p-4 hover:bg-gray-800 transition-all shadow-lg"
-            aria-label="Next"
-          >
-            <FaArrowRight className="w-5 h-5" />
-          </button>
-        </div>
+            {/* Custom Navigation Buttons */}
+            {currentProjects.length > 1 && (
+              <>
+                <button
+                  onClick={() => swiperRef.current?.swiper.slidePrev()}
+                  className="absolute -top-10 lg:-top-20 right-20 z-10 bg-gray-900 text-white p-4 hover:bg-gray-800 transition-all shadow-lg"
+                  aria-label="Previous"
+                >
+                  <FaArrowLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => swiperRef.current?.swiper.slideNext()}
+                  className="absolute -top-10 lg:-top-20  right-4 z-10 bg-gray-900 text-white p-4 hover:bg-gray-800 transition-all shadow-lg"
+                  aria-label="Next"
+                >
+                  <FaArrowRight className="w-5 h-5" />
+                </button>
+              </>
+            )}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <p className="text-gray-500 text-lg">
+              No projects available in this category.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

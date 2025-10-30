@@ -1,13 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import card1 from "../../assets/Property/PropertyOne.webp"
-import card2 from "../../assets/Property/propertyTwo.webp"
-import card3 from "../../assets/Property/propertyThree.webp"
-import card4 from "../../assets/Property/propertyFour.webp"
-import card5 from "../../assets/Property/propertyFive.webp"
-import card6 from "../../assets/Property/propertySix.webp"
-import card7 from "../../assets/Property/propertySeven.webp"
-import card8 from "../../assets/Property/propertyEight.webp"
-
+import { allProperties } from "../../data/data";
 
 // Utility function to merge classnames
 const cn = (...classes) => classes.filter(Boolean).join(' ');
@@ -26,7 +18,7 @@ function Marquee({
     const container = containerRef.current;
     if (!container) return;
 
-    const duration = 30 * 1000; // 20 seconds
+    const duration = 30 * 1000; // 30 seconds
 
     const animation = container.animate(
       [
@@ -74,55 +66,65 @@ function Marquee({
   );
 }
 
-// Image Card Component - Simplified for just images
-const ImageCard = ({ img, title }) => (
+// Image Card Component with Navigation
+const ImageCard = ({ property, onClick }) => (
   <figure
     className={cn(
-      "relative h-full w-[350px] cursor-pointer overflow-hidden",
+      "relative h-full w-[180px] md:w-[300px] lg:w-[350px] cursor-pointer overflow-hidden",
       "hover:scale-105 transition-transform duration-300"
     )}
+    onClick={(e) => {
+      e.preventDefault();
+      onClick();
+    }}
   >
     <img 
       className="w-full h-full object-cover" 
-      alt={title} 
-      src={img} 
+      alt={property.name} 
+      src={property.image} 
     />
     <div className="absolute bottom-0 left-0 p-4 pt-16 bg-gradient-to-t from-black/80 via-black/50 to-transparent w-full">
-      <figcaption className="font-medium text-white text-xl">{title}</figcaption>
+      <figcaption className="font-medium text-white text-xl">
+        {property.name}
+      </figcaption>
+      <p className="text-white/80 text-sm mt-1">{property.location}</p>
     </div>
   </figure>
 );
 
-// Reviews data
-const images = [
-  { title: "The Maple Heights", img: card1 },
-  { title: "The Premium Suite 3.0", img: card2 },
-  { title: "The Premium Nobel Court", img: card3 },
-  { title: "The Legacy Residence", img: card4 },
-  { title: "The Premium Southpoint Villa", img: card5 },
-  { title: "The Premium Studio Suite 4.0", img: card6 },
-  { title: "The Premium Lakeview Terrace", img: card7 },
-  { title: "The Premium Glory Garden", img: card8 },
-];
-
-const firstRow = images.slice(0, images.length / 2);
-const secondRow = images.slice(images.length / 2);
-
 // Main Component
 export default function MovingImages() {
+  // Split properties into two rows
+  const firstRow = allProperties.slice(0, Math.ceil(allProperties.length / 2));
+  const secondRow = allProperties.slice(Math.ceil(allProperties.length / 2));
+
+  // Handle navigation to property detail page
+  const handlePropertyClick = (propertyId) => {
+    // Using window.location for navigation since we don't have access to useNavigate
+    window.location.href = `/property/${propertyId}`;
+  };
+
   return (
     <div className="bg-[#065E33] py-10">
       <div className="container mx-auto px-4">
         {/* Marquee Container with proper overflow */}
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden gap-4">
           <Marquee pauseOnHover className="py-4">
-            {firstRow.map((image, index) => (
-              <ImageCard key={`first-${index}`} {...image} />
+            {firstRow.map((property) => (
+              <ImageCard 
+                key={`first-${property.id}`} 
+                property={property}
+                onClick={() => handlePropertyClick(property.id)}
+              />
             ))}
           </Marquee>
           <Marquee reverse pauseOnHover className="py-4">
-            {secondRow.map((image, index) => (
-              <ImageCard key={`second-${index}`} {...image} />
+            {secondRow.map((property) => (
+              <ImageCard 
+                key={`second-${property.id}`} 
+                property={property}
+                onClick={() => handlePropertyClick(property.id)}
+              />
             ))}
           </Marquee>
         </div>

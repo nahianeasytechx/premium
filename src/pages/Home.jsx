@@ -20,7 +20,7 @@ const Home = () => {
         <Advertise/>
         
         {/* Scroll Triggered Image - positioned absolutely over Caption + Advertise */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none z-10 h-full">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none z-10 h-full scroll-smooth">
           <ScrollTriggeredSingle 
             scrollHeight="100%"
             className="

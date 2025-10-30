@@ -75,7 +75,7 @@ const Blogs = () => {
                     onMouseEnter={() => setHoveredCard(idx)}
                     onMouseLeave={() => setHoveredCard(null)}
                   >
-                    <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden flex-shrink-0 rounded-t-lg">
+                    <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden shrink-0 rounded-t-lg">
                       <img
                         src={blog.image}
                         alt={blog.title}
@@ -86,7 +86,7 @@ const Blogs = () => {
                         {blog.readTime}
                       </div>
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-60" />
 
                       <div className={`absolute inset-0 flex flex-col justify-end p-4 transition-all duration-500 ${hoveredCard === idx ? "opacity-100" : "opacity-0"} `}>
                         <p className="text-white text-sm line-clamp-3 mb-3">{blog.excerpt}</p>
@@ -96,7 +96,7 @@ const Blogs = () => {
                       </div>
                     </div>
 
-                    <div className="p-4 flex flex-col flex-grow">
+                    <div className="p-4 flex flex-col grow">
                       <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-green-700 transition-colors">
                         {blog.title}
                       </h3>

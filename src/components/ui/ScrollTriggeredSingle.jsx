@@ -10,7 +10,7 @@ export default function ScrollTriggeredSingle({ className = "", scrollHeight = "
     offset: ["start start", "end end"]
   });
 
-  // Height grows from 0% to 100% as you scroll
+  // Height grows from 0% to 100% as you scroll - with slower transition
   const height = useTransform(
     scrollYProgress,
     [0, 1],
@@ -19,6 +19,8 @@ export default function ScrollTriggeredSingle({ className = "", scrollHeight = "
 
   // Array of your images - add as many as you want
   const images = [
+verticalImg,
+verticalImg,
 verticalImg,
 verticalImg,
 verticalImg,
@@ -38,6 +40,12 @@ verticalImg,
         style={{
           ...imageWrapper,
           height
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 50,
+          damping: 30,
+          mass: 2
         }}
       >
         <div style={imageContainer}>

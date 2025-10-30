@@ -16,6 +16,7 @@ const Progress = () => {
     {
       image: progressThree,
       context: "See Our Progress",
+      link:"https://api.dpremiumhomes.com/"
 
     }
   ];
@@ -33,7 +34,8 @@ const Progress = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10 pb-10">
           {progressData.map((item, index) => (
             <div key={index} className="relative group overflow-hidden  shadow-lg cursor-pointer">
-              {/* Image */}
+<a href={item.link} target='_blank'>
+                {/* Image */}
               <img 
                 src={item.image} 
                 alt={item.title}
@@ -41,7 +43,7 @@ const Progress = () => {
               />
               
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-black/10 to-transparent opacity-100 group-hover:opacity-90 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-linear-to-t from-black/0 via-black/10 to-transparent opacity-100 group-hover:opacity-90 transition-opacity duration-300">
 
               </div>
 
@@ -51,6 +53,7 @@ const Progress = () => {
            {item.context}
                 </button>
               </div>
+</a>
             </div>
           ))}
         </div>

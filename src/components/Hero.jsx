@@ -10,6 +10,7 @@ import bannerOne from "../assets/Banner images/bannerFive.png";
 import bannerTwo from "../assets/Banner images/bannerSix.png";
 import bannerThree from "../assets/Banner images/bannerThree.png";
 import bannerFour from "../assets/Banner images/bannerFour.png";
+import { Link } from "react-router-dom";
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,11 +21,11 @@ const HeroSlider = () => {
       image: bannerOne,
     },
     {
-      title: "Ati Society",
+      title: "ATI CITY SOCIETY",
       image: bannerTwo,
     },
     {
-      title: "",
+      title: "AFFORDABLE PRICE",
       image: bannerThree,
     },
     {
@@ -79,7 +80,9 @@ const HeroSlider = () => {
             {slides[currentSlide].title}
           </h1>
           <button className="px-6 sm:px-8 py-1 sm:py-3 border border-white text-white text-xs  font-medium tracking-wider hover:bg-white hover:text-black transition">
+           <Link to="/projects">
             DISCOVER
+            </Link>
           </button>
         </div>
 

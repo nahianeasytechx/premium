@@ -1,34 +1,21 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-
-import card1 from "../../assets/Property/PropertyOne.webp";
-import card2 from "../../assets/Property/propertyTwo.webp";
-import card3 from "../../assets/Property/propertyThree.webp";
-import card4 from "../../assets/Property/propertyFour.webp";
-import card5 from "../../assets/Property/propertyFive.webp";
-import card6 from "../../assets/Property/propertySix.webp";
-import card7 from "../../assets/Property/propertySeven.webp";
-import card8 from "../../assets/Property/propertyEight.webp";
+import { AppContext } from "../../context/AppContext";
 
 const PropertyCarousel = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const swiperRef = useRef(null);
   const navigate = useNavigate();
-
-  const properties = [
-    { id: 1, title: "The Legacy Residence", image: card4, hoverText: "Ashulia Model Town" },
-    { id: 2, title: "The Premium Suite 4.0", image: card6, hoverText: "Ahulia Model Town" },
-    { id: 3, title: "The Premium Glory Garden", image: card8, hoverText: "Amin Mohammad Model Town, Ashulia." },
-    { id: 4, title: "The Premium Suite 3.0", image: card2, hoverText: "Ashulia Model Town" },
-    { id: 5, title: "The Maple Heights", image: card1, hoverText: "The Premium Smart City." },
-    { id: 6, title: "The Premium Southpoiont Villa", image: card5, hoverText: "Ahulia Model Town" },
-    { id: 7, title: "The Premium green Heaven", image: card5, hoverText: "D Block Amin Mohammad Model Town, Ashulia." },
-  ];
+  
+  // Get properties from context
+  const { allProperties } = useContext(AppContext);
+  
+  const properties = allProperties;
 
   return (
     <div className="bg-white py-12 relative">
@@ -62,7 +49,11 @@ const PropertyCarousel = () => {
             speed={600}
             loop={true}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
-            breakpoints={{ 640: { slidesPerView: 1 }, 1024: { slidesPerView: 2 }, 1280: { slidesPerView: 4 } }}
+            breakpoints={{ 
+              640: { slidesPerView: 1 }, 
+              1024: { slidesPerView: 2 }, 
+              1280: { slidesPerView: 4 } 
+            }}
           >
             {properties.map((property, idx) => (
               <SwiperSlide key={property.id}>
@@ -70,11 +61,11 @@ const PropertyCarousel = () => {
                   className="group relative h-72 sm:h-80 md:h-96 cursor-pointer overflow-hidden shadow-xl md:shadow-lg hover:shadow-2xl transition-shadow duration-300"
                   onMouseEnter={() => setHoveredIndex(idx)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  onClick={() => navigate(`/property/${property.id}`)} // Navigate on click
+                  onClick={() => navigate(`/property/${property.id}`)}
                 >
                   <img
                     src={property.image}
-                    alt={property.title}
+                    alt={property.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
@@ -85,7 +76,7 @@ const PropertyCarousel = () => {
                     }`}
                   >
                     <div className="absolute bottom-0 p-4">
-                      <h3 className="text-white text-lg font-medium truncate">{property.title}</h3>
+                      <h3 className="text-white text-lg font-medium truncate">{property.name}</h3>
                     </div>
                   </div>
 
@@ -95,7 +86,7 @@ const PropertyCarousel = () => {
                       hoveredIndex === idx ? "opacity-100" : "opacity-0"
                     }`}
                   >
-                    <h3 className="text-white text-xl font-bold mb-3">{property.title}</h3>
+                    <h3 className="text-white text-xl font-bold mb-3">{property.name}</h3>
                     <p className="text-white/90 text-sm">{property.hoverText}</p>
                     <button className="mt-6 px-6 py-2 border border-white text-white hover:bg-white hover:text-black transition-all">
                       LEARN MORE
