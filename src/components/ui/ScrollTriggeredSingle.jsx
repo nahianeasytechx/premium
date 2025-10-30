@@ -42,10 +42,13 @@ verticalImg,
           height
         }}
         transition={{
+          transitionDuration:2,
+          ease:"easeInOut",
           type: "spring",
           stiffness: 50,
           damping: 30,
-          mass: 2
+          mass: 2,
+       
         }}
       >
         <div style={imageContainer}>

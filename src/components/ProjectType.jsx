@@ -39,7 +39,7 @@ const ProjectsByType = () => {
       <div className="container mx-auto px-4 lg:px-6">
         {/* Header */}
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
             Projects by Community
           </h2>
           <div className="w-20 h-1 bg-green-700"></div>
