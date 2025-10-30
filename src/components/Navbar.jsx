@@ -67,7 +67,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
 
           {/* Desktop Left Nav */}
-          <div className={`hidden lg:flex items-center space-x-5 text-sm tracking-tight font-normal ${styles.textColor}`}>
+          <div className={`hidden lg:flex items-center space-x-5  tracking-tight font-normal ${styles.textColor}`}>
             <Link to="/" className={`${navLinkClass} ${styles.hoverColor}`}>Home</Link>
             <Link to="/projects" className={`${navLinkClass} ${styles.hoverColor}`}>Projects</Link>
             <Link to="/reviews" className={`${navLinkClass} ${styles.hoverColor}`}>Reviews</Link>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Hero from '../components/Hero'
 import Caption from '../components/Caption'
 import Advertise from '../components/ui/Advertise'
@@ -11,6 +11,10 @@ import Blogs from '../components/Blogs'
 import ScrollTriggeredSingle from '../components/ui/ScrollTriggeredSingle'
 
 const Home = () => {
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior:"smooth" });
+  }, []);
   return (
     <>
       <Hero />

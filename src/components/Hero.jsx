@@ -70,7 +70,7 @@ const HeroSlider = () => {
               alt={slide.title}
               className="w-full h-full  object-cover lg:object-fit-fill"
             />
-            <div className="object-fit absolute inset-0 bg-black/10" />
+            <div className="object-fit absolute inset-0 bg-black/50" />
           </div>
         ))}
 
