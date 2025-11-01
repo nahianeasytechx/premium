@@ -9,7 +9,8 @@ import card5 from "../assets/Property/propertyFive.webp";
 import card6 from "../assets/Property/propertySix.webp";
 import card7 from "../assets/Property/propertySeven.webp";
 import card8 from "../assets/Property/propertyEight.webp";
-
+import blogone from "../assets/blogs/blog1.webp"
+import blogtwo from "../assets/blogs/blog2.webp"
 // ✅ Communities
 export const communities = [
   "The Premium City",
@@ -520,3 +521,27 @@ export const allProperties = [
     ],
   },
 ];
+
+export const allBlogs = [ /* your blog data stays exactly as is */ 
+    {
+      id: 1,
+      title: "We are proud to share that The Premium Homes Ltd. was the Title Partner of TEDxDaffodilU 202",
+      excerpt: "Discover the essential factors you need to evaluate before making one of life's biggest investments.",
+      image: blogone,
+      author: "Sarah Johnson",
+      date: "Oct 15, 2024",
+      comments: 24,
+      readTime: "5 min read",
+    },
+    {
+      id: 2,
+      title: "Collaborative Discussion with the Honorable Vice Chancellor of City University about The Premium Smart City of The Premium Homes Ltd.",
+      excerpt: "Explore the latest interior design trends that are shaping homes and commercial spaces this year.",
+      image: blogtwo,
+      author: "Michael Chen",
+      date: "Oct 12, 2024",
+      comments: 18,
+      readTime: "7 min read",
+    },
+    // ...rest stays unchanged
+  ];

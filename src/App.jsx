@@ -7,6 +7,13 @@ import Projects from './pages/Projects'
 import PropertyDescription from './components/PropertyDescription'
 import { useEffect } from 'react'
 import Lenis from '@studio-freight/lenis'
+import About from './pages/About'
+import ReviewsPage from './pages/Reviews'
+import ContactPage from './pages/Contact'
+import Blogs from './pages/Blogs'
+import BlogsPage from './pages/Blogs'
+import BlogDetailsPage from './pages/BlogDetails'
+import Faq from './pages/Faq'
 function App() {
  useEffect(() => {
     const lenis = new Lenis({
@@ -39,7 +46,12 @@ function App() {
   <Route path="/" element={<Home/>}/>
 <Route path='/projects' element={  <Projects/>}/>
  <Route path="/property/:id" element={<PropertyDescription />} />
- <Route path="/verona" element={<PropertyDescription />} />
+ <Route path="/about" element={  <About/>}/>
+ <Route path='/reviews' element={<ReviewsPage/>}/>
+ <Route path='/contact' element={<ContactPage/>}/>
+ <Route path='/blogs' element={<Blogs/>}/>
+ <Route path="/blogs/:id" element={<BlogDetailsPage/>}/>
+ <Route path='/faq' element={ <Faq/> }/>
 </Routes>
 <Footer/>
     </>

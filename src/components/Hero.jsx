@@ -17,7 +17,7 @@ const HeroSlider = () => {
 
   const slides = [
     {
-      title: "ASHULIA",
+      title: "ASHULIA MODEL TOWN",
       image: bannerOne,
     },
     {

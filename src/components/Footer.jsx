@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Facebook,
   Linkedin,
   Youtube,
   Instagram,
-  Apple,
-  PlayCircle,
-  MessageCircle,
   ChevronUp,
+  Send,
 } from "lucide-react";
 import { IoLocation } from "react-icons/io5";
 import { IoIosCall } from "react-icons/io";
+import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
-import whiteLogo from "../assets/logo/white.png"
+import whiteLogo from "../assets/logo/white.png";
+
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    console.log("Subscribing email:", email);
+    setEmail("");
   };
 
   return (
@@ -23,231 +31,179 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Contact Section */}
+          {/* Logo and Description Section */}
           <div className="space-y-6">
-            <div className="flex  lg:justify-center items-center space-x-2">
-              {/* <div className="w-10 h-10 bg-emerald-600 rounded flex items-center justify-center">
-                <div className="text-white font-bold text-xs">TPH</div>
-              </div> */}
+            <div className="flex items-center space-x-2">
               <div className="text-emerald-500 text-xs font-semibold">
                 <img
                   src={whiteLogo}
-                  alt=""
-                  className="w-50 lg:w-full"
+                  alt="The Premium Homes"
+                  className="w-60 lg:w-full"
                   loading="lazy"
                 />
               </div>
             </div>
-          </div>
-
-          {/* Projects Section */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Projects</h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  The Premium Green Valley
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  The Premium Glory Garden
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  The Premium Green Haven
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  The Premium Floral Haven
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  The Premium Harmony Residence
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-emerald-500 hover:text-emerald-400 transition-colors font-semibold"
-                >
-                  View All
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Quick Links Section */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  Terms of Use
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  Our Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  FAQs
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Section */}
-          <div>
-            <div>
-              <h3 className="text-white font-semibold mb-3">Contact Us</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Empowering communities through compassion and dedication to making a positive difference.
+            </p>
+            <div className="flex space-x-3">
               <a
-                href="tel:09617777000"
-                className="flex text-white hover:text-emerald-300 transition-colors"
+                href="https://www.facebook.com/thepremiumhomesltd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#1a4d3d] flex items-center justify-center text-gray-300 hover:text-emerald-500 hover:bg-[#215740] transition-colors"
               >
-                <span>
-                  <IoIosCall className="mt-1" />
-                </span>{" "}
-                09617777000
+                <Facebook className="w-4 h-4" />
               </a>
-              <br />
-
               <a
-                href=""
-                className="text-white hover:text-emerald-300 transition-colors"
-              ></a>
+                href="https://www.linkedin.com/company/thepremiumhomes?originalSubdomain=bd"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#1a4d3d] flex items-center justify-center text-gray-300 hover:text-emerald-500 hover:bg-[#215740] transition-colors"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.youtube.com/@ThePremiumHomesLTD"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#1a4d3d] flex items-center justify-center text-gray-300 hover:text-emerald-500 hover:bg-[#215740] transition-colors"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-[#1a4d3d] flex items-center justify-center text-gray-300 hover:text-emerald-500 hover:bg-[#215740] transition-colors"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
             </div>
-            <br />
-            {/* Location Section */}
-            <div>
-              <div className="space-y-3">
+          </div>
+
+          {/* Quick Menu Section */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 relative inline-block">
+              Quick Menu
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-emerald-500"></span>
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  to="/"
+                  className="text-gray-300 hover:text-emerald-500 transition-colors text-sm flex items-center"
+                >
+                  <ChevronUp className="w-3 h-3 rotate-90 mr-1" />
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about"
+                  className="text-gray-300 hover:text-emerald-500 transition-colors text-sm flex items-center"
+                >
+                  <ChevronUp className="w-3 h-3 rotate-90 mr-1" />
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/projects"
+                  className="text-gray-300 hover:text-emerald-500 transition-colors text-sm flex items-center"
+                >
+                  <ChevronUp className="w-3 h-3 rotate-90 mr-1" />
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/blogs"
+                  className="text-gray-300 hover:text-emerald-500 transition-colors text-sm flex items-center"
+                >
+                  <ChevronUp className="w-3 h-3 rotate-90 mr-1" />
+                  Blogs
+                </Link>
+              </li>
+              <li>
                 <a
                   href="#"
-                  className="flex items-center space-x-3 text-white hover:text-emerald-300 transition-colors"
+                  className="text-gray-300 hover:text-emerald-500 transition-colors text-sm flex items-center"
                 >
-                  <div className="text-sm">
-                    <h3 className="flex font-semibold text-gray-200">
-                      <span>
-                        {" "}
-                        <IoLocation className=" text-base" />
-                      </span>
-                      Corporate Office:{" "}
-                    </h3>
-                    <div className=" text-xs ">
-                      Land View Commercial Center, 9th Floor 28 Gulshan North
-                      C/A, Gulshan Circle-2 ,DHaka
-                    </div>
-                  </div>
+                  <ChevronUp className="w-3 h-3 rotate-90 mr-1" />
+                  Contact
                 </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Us Section */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 relative inline-block">
+              Contact Us
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-emerald-500"></span>
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <IoLocation className="text-emerald-500 text-lg mt-1 flex-shrink-0" />
+                <div className="text-sm">
+                  <p className="text-white font-semibold mb-1">Address:</p>
+                  <p className="text-gray-300">
+                    Land View Commercial Center, 9th Floor 28 Gulshan North C/A, Gulshan Circle-2, Dhaka
+                  </p>
+                </div>
               </div>
-              <br />
-              <div className="space-y-3">
-                <a
-                  href="#"
-                  className="flex items-center space-x-3 text-white hover:text-emerald-300 transition-colors"
-                >
-                  <div className="text-sm">
-                    <h3 className="flex font-semibold text-gray-200">
-                      <span>
-                        {" "}
-                        <IoLocation className=" text-base" />
-                      </span>
-                      Site Office:{" "}
-                    </h3>
-                    <div className=" text-xs ">
-                      2nd & 3rd Floor, Tokyo Plaza,Ashulia Model Town Khagan
-                      Bazar,Dhaka C/A, Gulshan Circle-2 ,Dhaka
-                    </div>
-                  </div>
-                </a>
+              <div className="flex items-start space-x-3">
+                <IoIosCall className="text-emerald-500 text-lg mt-1 flex-shrink-0" />
+                <div className="text-sm">
+                  <p className="text-white font-semibold mb-1">Phone:</p>
+                  <a
+                    href="tel:09617777000"
+                    className="text-gray-300 hover:text-emerald-500 transition-colors"
+                  >
+                    09617777000
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <MdEmail className="text-emerald-500 text-lg mt-1 flex-shrink-0" />
+                <div className="text-sm">
+                  <p className="text-white font-semibold mb-1">Email:</p>
+                  <a
+                    href="mailto:info@thepremiumhomes.com"
+                    className="text-gray-300 hover:text-emerald-500 transition-colors"
+                  >
+                    info@thepremiumhomes.com
+                  </a>
+                </div>
               </div>
             </div>
-            <br />
-            {/* Social Media */}
-            <div>
-              <h3 className="text-white font-semibold mb-4">
-                Follow us on social media
-              </h3>
-              <div className="flex space-x-4">
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  <a href="https://www.facebook.com/thepremiumhomesltd/">
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  <a href="https://www.linkedin.com/company/thepremiumhomes?originalSubdomain=bd">
-                    {" "}
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  <a href="https://www.youtube.com/@ThePremiumHomesLTD">
-                    {" "}
-                    <Youtube className="w-5 h-5" />
-                  </a>
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-emerald-500 transition-colors"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
+          </div>
+
+          {/* Newsletter Section */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 relative inline-block">
+              Newsletter
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-emerald-500"></span>
+            </h3>
+            <p className="text-gray-300 text-sm mb-4">
+              Stay updated with our latest news and promotions.
+            </p>
+            <form onSubmit={handleSubscribe} className="space-y-3">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                className="w-full px-4 py-3 bg-[#1a4d3d] text-white placeholder-gray-400 border border-[#2a5d4d] rounded focus:outline-none focus:border-emerald-500 transition-colors text-sm"
+                required
+              />
+              <button
+                type="submit"
+                className="w-full px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-semibold transition-all flex items-center justify-center space-x-2 text-sm shadow-[0_0_15px_rgba(16,185,129,0.5)] hover:shadow-[0_0_25px_rgba(16,185,129,0.8)] hover:scale-105"
+              >
+                <Send className="w-4 h-4" />
+                <span>Subscribe</span>
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -257,37 +213,11 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-gray-400 text-sm text-center sm:text-left">
-              © The Premium Homes Ltd 2025 
+              © 2025 The Premium Homes Ltd. All rights reserved.
             </div>
-            <div className="flex items-center space-x-4 text-sm">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-emerald-500 transition-colors"
-              >
-                Privacy
-              </a>
-              <span className="text-gray-600">·</span>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-emerald-500 transition-colors"
-              >
-                Terms
-              </a>
-              <span className="text-gray-600">·</span>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-emerald-500 transition-colors"
-              >
-                Sitemap
-              </a>
+            <div className="text-gray-400 text-sm text-center sm:text-right">
+              Developed by <a href="#" className="text-emerald-500 hover:text-emerald-400 transition-colors">Easy Tech Solutions</a>
             </div>
-            <button
-              onClick={scrollToTop}
-              className="w-10 h-10 rounded-full border-2 border-emerald-500 flex items-center justify-center text-emerald-500 hover:bg-emerald-500 hover:text-white transition-colors"
-              aria-label="Scroll to top"
-            >
-              <ChevronUp className="w-5 h-5" />
-            </button>
           </div>
         </div>
       </div>

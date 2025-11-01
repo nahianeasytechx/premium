@@ -64,7 +64,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${styles.navBg}`}>
       <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between lg:justify-around items-center">
 
           {/* Desktop Left Nav */}
           <div className={`hidden lg:flex items-center space-x-5  tracking-tight font-normal ${styles.textColor}`}>
@@ -73,13 +73,13 @@ const Navbar = () => {
             <Link to="/reviews" className={`${navLinkClass} ${styles.hoverColor}`}>Reviews</Link>
             <Link to="/contact" className={`${navLinkClass} ${styles.hoverColor}`}>Contact</Link>
             <Link to="/about" className={`${navLinkClass} ${styles.hoverColor}`}>About</Link>
-            <Link to="/media" className={`${navLinkClass} ${styles.hoverColor}`}>Blogs</Link>
+            <Link to="/blogs" className={`${navLinkClass} ${styles.hoverColor}`}>Blogs</Link>
             <Link to="/faq" className={`${navLinkClass} ${styles.hoverColor}`}>FAQ</Link>
           </div>
 
           {/* Logo */}
           <Link to="/" className="flex items-center ">
-            <img src={styles.logoSrc} alt="Logo" className="object-contain w-50 transition-opacity duration-300" />
+            <img src={styles.logoSrc} alt="Logo" className="object-contain w-50 lg:w-70 transition-opacity duration-300" />
           </Link>
 
           {/* Desktop Right */}
